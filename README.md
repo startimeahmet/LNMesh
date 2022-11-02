@@ -102,3 +102,6 @@ $ sudo systemctl enable --now bt-network
 #### To configure Slave nodes:
 No configuration is required; simply enable bluetooth, discover & peer with the master, and run the following command:
 `bt-network -c <bluetooth name or address of Master> nap`
+
+___
+[Home](..)
