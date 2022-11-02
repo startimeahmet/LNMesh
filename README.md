@@ -9,9 +9,9 @@ This implementation was done using several Raspberry Pi 4 model B units, system 
 - Kernel Version: 5.15
 - Debian Version: 11 (bullseye)
 
-Two types of local networks were used during testing:
-1. IP-over-Bluetooth Low Energy (BLE) network        (Star topology, inflexible)
-2. Ad-hoc Wi-Fi mesh network                         (Mesh topology, flexible)
+Two types of local networks were used during testing (click for individual details):
+1. [IP-over-Bluetooth Low Energy (BLE) network](BLE_star)        (Star topology, inflexible)
+2. [Ad-hoc Wi-Fi mesh network](WIFI_mesh)                         (Mesh topology, flexible)
 
 
 ## IP-over-BLE Setup
@@ -102,8 +102,3 @@ $ sudo systemctl enable --now bt-network
 #### To configure Slave nodes:
 No configuration is required; simply enable bluetooth, discover & peer with the master, and run the following command:
 `bt-network -c <bluetooth name or address of Master> nap`
-
-
-## Ad-hoc Wi-Fi Mesh Setup
-
-Ad-hoc Wi-Fi mesh was accomplished using the 
