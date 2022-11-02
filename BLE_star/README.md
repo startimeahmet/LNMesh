@@ -18,7 +18,7 @@ Additionally, for IP-over-BLE, the master node acts as a DHCP server to issue IP
 
 
 ## Topology
-<img src="2.png" width="600" height="auto"> 
+<img src="BLE_topology.png" width="600" height="auto"> 
 
 
 ## Instructions
