@@ -94,6 +94,7 @@ __It is recommended to reboot after installing Blueman.__
   
 2. Over repeated implementations of this topology we found that occasionally, after configuring the master and attempting to connect a slave, the slave would give an error saying `Network service is not supported by this device`. After removing/deleting the configuration changes described in the above section **To configure the Master node**, rebooting the master, and performing those configuration changes again (doing nothing differently), we found that on subsequent attempts the slaves would connect without issue. 
   
+
 Final Note: This setup is very much a hack and not an enterprise solution; stability and consistency may vary.
 
 ___
