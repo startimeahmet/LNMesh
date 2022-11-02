@@ -1,7 +1,7 @@
 # LNMesh
 
 ## Introduction
-In this workshop, we implement a local Lightning Network (LN) cluster of several nodes which may continue to operate and process transactions offline for a period if internet access is lost. 
+In this workshop, we implement a local Lightning Network (LN) cluster of several nodes which may continue to operate and process transactions offline for a period if internet connectivity is lost. 
 
 
 ## System Info
