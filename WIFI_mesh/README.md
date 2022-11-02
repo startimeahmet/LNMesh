@@ -10,7 +10,7 @@
 
 
 ## Topology
-
+<img src="WIFI_topology.png" width="600" height="auto"> 
 
 ## Instructions
 
