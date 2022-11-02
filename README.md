@@ -14,3 +14,4 @@ Two types of local networks were used during testing (click for individual detai
 2. [Ad-hoc Wi-Fi mesh network](WIFI_mesh)                         (Mesh topology, flexible)
 
 
+## Installing LN & establishing channels
