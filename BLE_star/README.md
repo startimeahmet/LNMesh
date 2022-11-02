@@ -94,7 +94,8 @@ bt-network -c <bluetooth name or address of Master> nap
 _It is recommended to reboot after installing Blueman._
   
 2. Over repeated implementations of this topology we found that occasionally, after configuring the master and attempting to connect a slave, the slave would give an error saying `Network service is not supported by this device`. After removing/deleting the configuration changes described in the above section "_To configure the Master node_", rebooting the master, and performing those configuration changes again (doing nothing differently), we found that on subsequent attempts the slaves would connect without issue. 
-  
+
+3. Occasionally we would observe page/segmentation faults crashing the bt-network connection from the slave nodes. It was unclear what triggered these errors, but they generally were not a significant issue. Reconnecting (by running the script in the above section "_To configure Slave nodes_") or rebooting generally resolved these problems.
 
 Final Note: This setup is very much a hack and should not be considered an enterprise solution; stability and consistency may vary.
 
