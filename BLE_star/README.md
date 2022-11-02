@@ -85,8 +85,9 @@ $ sudo systemctl enable --now bt-network
 
 ### To configure Slave nodes:
 No configuration is required; simply enable bluetooth, discover & peer with the master, and run the following command:
-
-`bt-network -c <bluetooth name or address of Master> nap`
+```
+bt-network -c <bluetooth name or address of Master> nap
+```
   
 ## Known Issues & Workarounds:
 1. The built-in bluetooth manager for Raspberry Pi OS often has issues detecting, pairing, and/or connecting with other devices (especially other Pi's). We found that results were more consistent using [Blueman](https://github.com/blueman-project/blueman) bluetooth manager: `$ sudo apt-get install blueman`. 
