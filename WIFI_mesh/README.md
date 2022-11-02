@@ -1,4 +1,4 @@
-# Ad-hoc Wi-Fi Mesh Network
+#  <img src="BATMAN.svg" width="24" height="auto"> Ad-hoc Wi-Fi Mesh Network
 
 
 
