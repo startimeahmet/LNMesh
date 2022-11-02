@@ -1,1 +1,1 @@
-# Ad-hoc Wi-Fi Mesh
+# Ad-hoc Wi-Fi Mesh Network
