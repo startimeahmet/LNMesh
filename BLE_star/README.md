@@ -43,7 +43,7 @@ Kind=bridge
 Name=pan0
 
 [Network]
-Address=172.30.1.1/24
+Address=172.29.1.1/24
 DHCPServer=yes
 ```
 __N.B.__ - If connected devices should not use the BLE channel to accessing external network, add the `EmitRouter=no` line in the **Network** section of the above file.
