@@ -99,4 +99,4 @@ __It is recommended to reboot after installing Blueman.__
 Final Note: This setup is very much a hack and not an enterprise solution; stability and consistency may vary.
 
 ___
-[Home](/../../) - BLE Star - [Wi-Fi Mesh](WIFI_mesh)
+[Home](/../../) - BLE Star - [Wi-Fi Mesh](../WIFI_mesh)
