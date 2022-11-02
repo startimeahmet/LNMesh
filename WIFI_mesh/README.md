@@ -11,6 +11,7 @@
 
 ## Topology
 <img src="WIFI_topology.png" width="600" height="auto"> 
+Nodes can communicate directly with all other node(s) within range, indirectly with out of range nodes via node(s) in range
 
 ## Instructions
 
