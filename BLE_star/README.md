@@ -23,7 +23,7 @@ Additionally, for IP-over-BLE, the master node acts as a DHCP server to issue IP
 
 ## Instructions
 It is *strongly* recommended to set the bluetooth hostname on each device before attempting to configure anything. Otherwise you will end up with several bluetooth devices all named __raspberrypi__ and no idea which is which when trying to discover & peer.
-To set the bluetooth hostname, create the `/etc/machine-info` file with the following content, replacing <device-name> with your desired bluetooth name:
+To set the bluetooth hostname, create the `/etc/machine-info` file with the following content, replacing &lt;device-name&gt; with your desired bluetooth name:
 ```
 PRETTY_HOSTNAME=<device-name>
 ```
