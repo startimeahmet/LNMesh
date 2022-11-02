@@ -1,4 +1,4 @@
-# <img src="bluetooth.png" width="24" height="auto" alt="Bluetooth icon"> IP-over-BLE Star Network
+# <img src="Bluetooth.svg" width="24" height="auto" alt="Bluetooth icon"> IP-over-BLE Star Network
 
 ## Introduction
 IP-over-BLE was tested as a Proof-of-Concept (PoC), and has several limitations compared to Wi-Fi mesh, including Inflexibility of topology, Shorter range, and Lower bandwidth/data rate, with the only noteworthy advantage being that BLE is significantly more energy/power efficient compared to Wi-Fi. Nevertheless, it could be handy for facilitating short-range, peer-to-peer transactions if a strong use case were identified.
