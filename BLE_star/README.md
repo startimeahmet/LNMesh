@@ -3,8 +3,8 @@
 ## Introduction
 IP-over-BLE was tested as a Proof-of-Concept (PoC), and has several limitations compared to Wi-Fi mesh, including Inflexibility of topology, Shorter range, and Lower bandwidth/data rate, with the only noteworthy advantage being that BLE is much more energy efficient compared to Wi-Fi. Nevertheless, it could be handy for facilitating short-range, peer-to-peer transactions if a strong use case were identified.
 
-IP-over-BLE has no officially recognized network standard, however this feature can be easily implemented by leveraging [BlueZ](https://github.com/bluez/bluez), which is the bluetooth stack implemented in Linux. Linux kernels 3.4 and later include Bluez 5.0 or later, and in particular version `5.55-3.1+rpt1` was used for our testing.
-To simplify BlueZ implementation of IP-over-BLE, we additionally used the [bluez-tools](https://github.com/khvzak/bluez-tools) package (tested with version `2.0-20170911.0.7cb788c-4`) which easily implements bluetooth network access.
+There are considerable ongoing efforts to define IPv6-over-BLE network standards, however for our workshop we required IPv4 connectivity, which has no officially recognized network standard for integration with a BLE link layer. This feature can however be easily implemented by leveraging [BlueZ](https://github.com/bluez/bluez), which is the bluetooth stack implemented in Linux. Linux kernels 3.4 and later include Bluez 5.0 or later, and in particular version `5.55-3.1+rpt1` was used for our testing.
+To simplify BlueZ implementation of IPv4-over-BLE, we additionally used the [bluez-tools](https://github.com/khvzak/bluez-tools) package (tested with version `2.0-20170911.0.7cb788c-4`) which has some functionality to readily implement bluetooth network access.
 
 ## Required packages
 - Bluez:        `$ sudo apt-get install bluez`
@@ -91,12 +91,12 @@ bt-network -c <bluetooth name or address of Master> nap
   
 ## Known Issues & Workarounds:
 1. The built-in bluetooth manager for Raspberry Pi OS often has issues detecting, pairing, and/or connecting with other devices (especially other Pi's). We found that results were more consistent using [Blueman](https://github.com/blueman-project/blueman) bluetooth manager: `$ sudo apt-get install blueman`. 
-__It is recommended to reboot after installing Blueman.__
+_It is recommended to reboot after installing Blueman._
   
 2. Over repeated implementations of this topology we found that occasionally, after configuring the master and attempting to connect a slave, the slave would give an error saying `Network service is not supported by this device`. After removing/deleting the configuration changes described in the above section **To configure the Master node**, rebooting the master, and performing those configuration changes again (doing nothing differently), we found that on subsequent attempts the slaves would connect without issue. 
   
 
-Final Note: This setup is very much a hack and not an enterprise solution; stability and consistency may vary.
+Final Note: This setup is very much a hack and should not be considered an enterprise solution; stability and consistency may vary.
 
 ___
 [Home](/../../) - BLE Star - [Wi-Fi Mesh](../WIFI_mesh)
