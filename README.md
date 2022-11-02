@@ -104,4 +104,4 @@ No configuration is required; simply enable bluetooth, discover & peer with the 
 `bt-network -c <bluetooth name or address of Master> nap`
 
 ___
-[Home](/blob/main/)
+[Home](/../../)
