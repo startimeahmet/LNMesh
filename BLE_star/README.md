@@ -46,7 +46,7 @@ Name=pan0
 Address=172.30.1.1/24
 DHCPServer=yes
 ```
-__N.B.__ - If connected devices should not use the BLE channel to accessing external network, add the `EmitRouter=no` line in the above file.
+__N.B.__ - If connected devices should not use the BLE channel to accessing external network, add the `EmitRouter=no` line in the **Network** section of the above file.
 
 3. Register the bluetooth agent service by creating the following file at `/etc/systemd/system/bt-agent.service`:
 ```
@@ -87,3 +87,11 @@ $ sudo systemctl enable --now bt-network
 No configuration is required; simply enable bluetooth, discover & peer with the master, and run the following command:
 
 `bt-network -c <bluetooth name or address of Master> nap`
+  
+## Known Issues & Workarounds:
+1. The built-in bluetooth manager for Raspberry Pi OS often has issues detecting, pairing, and/or connecting with other devices (especially other Pi's). We found that results were more consistent using [Blueman](https://github.com/blueman-project/blueman) bluetooth manager: `$ sudo apt-get install blueman`. 
+__It is recommended to reboot after installing Blueman.__
+  
+2. Over repeated implementations of this topology we found that occasionally, after configuring the master and attempting to connect a slave, the slave would give an error saying `Network service is not supported by this device`. After removing/deleting the configuration changes described in the above section **To configure the Master node**, rebooting the master, and performing those configuration changes again (doing nothing differently), we found that on subsequent attempts the slaves would connect without issue. 
+  
+Final Note: This setup is very much a hack and not an enterprise solution; stability and consistency may vary.
