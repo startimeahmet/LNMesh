@@ -90,7 +90,7 @@ bt-network -c <bluetooth name or address of Master> nap
 ```
   
 ## Known Issues & Workarounds:
-1. The built-in bluetooth manager for Raspberry Pi OS often has issues detecting, pairing, and/or connecting with other devices (especially other Pi's). We found that results were more consistent using [Blueman](https://github.com/blueman-project/blueman) bluetooth manager: `$ sudo apt-get install blueman`. 
+1. The built-in bluetooth manager for Raspberry Pi OS often has issues detecting, pairing, and/or connecting with other devices (especially other Pi's). We found that the behavior was more consistent using [Blueman](https://github.com/blueman-project/blueman) bluetooth manager: `$ sudo apt-get install blueman`. 
 _It is recommended to reboot after installing Blueman._
   
 2. Over repeated implementations of this topology we found that occasionally, after configuring the master and attempting to connect a slave, the slave would give an error saying `Network service is not supported by this device`. After removing/deleting the configuration changes described in the above section **To configure the Master node**, rebooting the master, and performing those configuration changes again (doing nothing differently), we found that on subsequent attempts the slaves would connect without issue. 
