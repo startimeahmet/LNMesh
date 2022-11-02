@@ -1,7 +1,7 @@
 # IP-over-BLE Star Network
 
 ## Introduction
-IP-over-BLE was tested as a Proof-of-Concept (PoC), and has several limitations compared to Wi-Fi mesh, including Inflexibility of topology, Shorter range, and Lower bandwidth/data rate, with the only noteworthy advantage being that BLE is much more energy efficient compared to Wi-Fi. Nevertheless, it could be handy for facilitating short-range, peer-to-peer transactions if a strong use case were identified.
+IP-over-BLE was tested as a Proof-of-Concept (PoC), and has several limitations compared to Wi-Fi mesh, including Inflexibility of topology, Shorter range, and Lower bandwidth/data rate, with the only noteworthy advantage being that BLE is significantly more energy efficient compared to Wi-Fi. Nevertheless, it could be handy for facilitating short-range, peer-to-peer transactions if a strong use case were identified.
 
 There are considerable ongoing efforts to define IPv6-over-BLE network standards, however for our workshop we required IPv4 connectivity, which has no officially recognized network standard for integration with a BLE link layer. This feature can however be easily implemented by leveraging [BlueZ](https://github.com/bluez/bluez), which is the bluetooth stack implemented in Linux. Linux kernels 3.4 and later include Bluez 5.0 or later, and in particular version `5.55-3.1+rpt1` was used for our testing.
 To simplify BlueZ implementation of IPv4-over-BLE, we additionally used the [bluez-tools](https://github.com/khvzak/bluez-tools) package (tested with version `2.0-20170911.0.7cb788c-4`) which has some functionality to readily implement bluetooth network access.
