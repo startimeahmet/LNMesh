@@ -88,6 +88,7 @@ No configuration is required; simply enable bluetooth, discover & peer with the 
 ```
 bt-network -c <bluetooth name or address of Master> nap
 ```
+_Note_ - The above command uses the **bluetooth** name or 48-bit **bluetooth** address or address of the master, not the IP hostname or IP address.
   
 ## Known Issues & Workarounds:
 1. The built-in bluetooth manager for Raspberry Pi OS often has issues detecting, pairing, and/or connecting with other devices (especially other Pi's). We found that the behavior was more consistent using [Blueman](https://github.com/blueman-project/blueman) bluetooth manager: `$ sudo apt-get install blueman`. 
@@ -97,7 +98,7 @@ _It is recommended to reboot after installing Blueman._
 
 3. Occasionally we would observe page/segmentation faults crashing the bt-network connection from the slave nodes. It was unclear what triggered these errors, but they generally were not a significant issue. Reconnecting (by running the script in the above section "_To configure Slave nodes_") or rebooting generally resolved these problems.
 
-Final Note: This setup is very much a hack and should not be considered an enterprise solution; stability and consistency may vary.
+_Final Note_ - This setup is very much a hack and should not be considered an enterprise solution; stability and consistency may vary.
 
 ___
 [Home](/../../) - BLE Star - [Wi-Fi Mesh](../WIFI_mesh)
