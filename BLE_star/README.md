@@ -12,7 +12,7 @@ To simplify BlueZ implementation of IPv4-over-BLE, we additionally used the [blu
 
 
 ## Description
-Bluetooth uses Time-Division Multiple Access (TDMA) for channel access, as opposed to Wi-Fi which uses CSMA. This means that in a bluetooth network, one node is designated as the master, and this node polls the other (slave) nodes for communications to occur. This is the reason for the inflexible topology, which is essentially a star with the master node in the center.
+Bluetooth uses Time-Division Multiple Access (TDMA) for channel access, meaning that in a bluetooth network, one node is designated as the master, and this master polls the other (slave) nodes for communications to occur. This is the reason for the inflexible topology, which is essentially a star with the master node in the center, as slaves may only communicate directly with the master when polled. To communicate with other nodes, the master must relay the information.
 
 Additionally, for IP-over-BLE, the master node acts as a DHCP server to issue IP addresses to connecting bluetooth peers.
 
