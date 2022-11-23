@@ -109,7 +109,7 @@ The instructions in this section assume that one has already completed the steps
 $ sudo apt-get install dnsmasq
 ```
 
-2. Edit the `/etc/dnsmasq.conf` file, adding the following content:
+2. Edit the `/etc/dnsmasq.conf` file to reflect the following content:
 ```
 
 ```
