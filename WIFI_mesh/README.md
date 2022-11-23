@@ -37,7 +37,9 @@ It is best to ensure that each node that will be participating in the mesh netwo
 
 ### General:
 
-1. Install batctl & dnsmasq
+These steps should be repeated for all nodes that will be part of the mesh network.
+
+1. Install batctl
 ```
 $ sudo apt-get install batctl
 ```
@@ -59,7 +61,6 @@ sudo batctl gw_mode client
 sudo ifconfig wlan0 up
 sudo ifconfig bat0 up
 ```
-<i>N.B.</i> When setting up the gateway node, comment out the `sudo batctl gw_mode client` line, and uncomment the `sudo batctl gw_mode server` line
 
 3. Make the script executable:
 ```
@@ -90,16 +91,28 @@ echo 'denyinterfaces wlan0' | sudo tee --append /etc/dhcpcd.conf
 ```
 /home/pi/start-batman-adv.sh &
 ```
-<i>N.B.</i> If you have opted not to use rc-local, you will need to create a service to run the script at boot time, or run it manually if for some reason that is preferred.
+<i>N.B.</i> If you have opted not to use the rc-local service, you will need to create a service to run the script at boot time, or run it manually if for some reason that is preferred.
 
 8. If this device will not be a gateway node, shut it down for now:
 ```
 sudo shutdown now
 ```
 
+The next sub-section focuses on how to convert one of these nodes into a gateway node for the mesh network.
+
 ### To configure the Gateway node:
 
-### To configure other nodes:
+The instructions in this section assume that one has already completed the steps in the previous sub-section to apply the basic configuration required for B.A.T.M.A.N.
+
+1. Install dnsmasq
+```
+$ sudo apt-get install dnsmasq
+```
+
+2. Edit the `/etc/dnsmasq.conf` file, adding the following content:
+```
+
+```
 
 
 
