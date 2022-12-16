@@ -111,7 +111,7 @@ $ sudo apt-get install dnsmasq
 
 2. Edit the `/etc/dnsmasq.conf` file to reflect the minimum configuration as provided in the [dnsmasq.txt.sample](dnsmasq.txt.sample)
 
-3. Edit the `/home/pi/start-batman-adv.sh` file and change the mode from client to server:
+3.a. Edit the `/home/pi/start-batman-adv.sh` file and change the mode from client to server:
 ```
 # Tell batman-adv this is a client node
 # sudo batctl gw_mode client            # comment out this line
@@ -120,7 +120,7 @@ $ sudo apt-get install dnsmasq
 sudo batctl gw_mode server              # uncomment this line
 ```
 
-3b. Also add the following content to the `/home/pi/start-batman-adv.sh` file to enable IPv4 forwarding and add rules to enable external access for the mesh network (you can replace eth0 with a different interface if you choose):
+3.b. Also add the following content to the `/home/pi/start-batman-adv.sh` file to enable IPv4 forwarding and add rules to enable external access for the mesh network (you can replace eth0 with a different interface if you choose):
 ```
 # Enable IPv4 traffic forwarding between eth0 and bat0
 sudo sysctl -w net.ipv4.ip_forward=1
@@ -129,7 +129,7 @@ sudo iptables -A FORWARD -i eth0 -o bat0 -m conntrack --ctstate RELATED,ESTABLIS
 sudo iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 ```
 
-3c. Add a line to the same file to configure an IP address for the gateway on the mesh network:
+3.c. Add a line to the same file to configure an IP address for the gateway on the mesh network:
 ```
 sudo ifconfig bat0 192.168.199.1/24
 ```
