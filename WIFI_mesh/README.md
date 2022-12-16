@@ -199,7 +199,7 @@ Create the /etc/bat-hosts file on all of the mesh nodes if you want the mac addr
 
 8. From any of the connected nodes, you should also be able to reach external networks (ex. internet access) via your gateway node. 
 
-##Advanced
+## Advanced
 B.A.T.M.A.N. advanced operates on layer 2. Thus all hosts participating in the virtual switched network are transparently connected together for all protocols above layer 2. Therefore the common diagnosis tools do not work as expected. To overcome these problems batctl contains the commands ping, traceroute, tcpdump which provide similar functionality to the normal `ping`, `traceroute`, `tcpdump` commands, but modified to layer 2 behaviour or using the B.A.T.M.A.N. advanced protocol.
 
 See the [batctl](https://manpages.ubuntu.com/manpages/jammy/man8/batctl.8.html) manpage for your distro for more detailed explanations.
