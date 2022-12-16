@@ -206,7 +206,7 @@ See the [batctl](https://manpages.ubuntu.com/manpages/jammy/man8/batctl.8.html) 
 
 
 ## Known Issues & Workarounds:
-- None, we found that this setup was pretty consistent
+- None, in  our experience this setup performed pretty consistently.
   
 ___
 [Home](/../../) - [BLE Star](../BLE_star) - Wi-Fi Mesh
