@@ -57,7 +57,7 @@ sudo batctl gw_mode client
 # Tell batman-adv this is a gateway node
 # sudo batctl gw_mode server
 
-# Activates batman-adv interfaces
+# Activates the interfaces for batman-adv
 sudo ifconfig wlan0 up
 sudo ifconfig bat0 up
 ```
@@ -109,8 +109,32 @@ The instructions in this section assume that one has already completed the steps
 $ sudo apt-get install dnsmasq
 ```
 
-2. Edit the `/etc/dnsmasq.conf` file to reflect the minimum configuration as provided in the [dnsmasq.txt.sample]()following content (:
+2. Edit the `/etc/dnsmasq.conf` file to reflect the minimum configuration as provided in the [dnsmasq.txt.sample](dnsmasq.txt.sample)
 
+3. Edit the `/home/pi/start-batman-adv.sh` file and change the mode from client to server:
+```
+# Tell batman-adv this is a client node
+# sudo batctl gw_mode client            # comment out this line
+
+# Tell batman-adv this is a gateway node
+sudo batctl gw_mode server              # uncomment this line
+```
+
+3b. Also add the following content to the `/home/pi/start-batman-adv.sh` file to enable IPv4 forwarding and add rules to enable external access for the mesh network (you can replace eth0 with a different interface if you choose):
+```
+# Enable IPv4 traffic forwarding between eth0 and bat0
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -A FORWARD -i eth0 -o bat0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
+```
+
+3c. Add a line to the same file to configure an IP address for the gateway on the mesh network:
+```
+sudo ifconfig bat0 192.168.199.1/24
+```
+
+<i>N.B.</i>: See the [start-batman-adv-gw.sh.sample](start-batman-adv-gw.sh.sample) file for an example of the completed configuration.
 
 
 ## Known Issues & Workarounds:
