@@ -98,6 +98,8 @@ echo 'denyinterfaces wlan0' | sudo tee --append /etc/dhcpcd.conf
 sudo shutdown now
 ```
 
+<i>N.B.</i>: See the [start-batman-adv-node.sh.sample](start-batman-adv-node.sh.sample) file for an example of the completed configuration.
+
 The next sub-section focuses on how to convert one of these nodes into a gateway node for the mesh network.
 
 ### To configure the Gateway node:
@@ -111,7 +113,7 @@ $ sudo apt-get install dnsmasq
 
 2. Edit the `/etc/dnsmasq.conf` file to reflect the minimum configuration as provided in the [dnsmasq.txt.sample](dnsmasq.txt.sample)
 
-3.a. Edit the `/home/pi/start-batman-adv.sh` file and change the mode from client to server:
+3. Edit the `/home/pi/start-batman-adv.sh` file and change the mode from client to server:
 ```
 # Tell batman-adv this is a client node
 # sudo batctl gw_mode client            # comment out this line
@@ -120,7 +122,7 @@ $ sudo apt-get install dnsmasq
 sudo batctl gw_mode server              # uncomment this line
 ```
 
-3.b. Also add the following content to the `/home/pi/start-batman-adv.sh` file to enable IPv4 forwarding and add rules to enable external access for the mesh network (you can replace eth0 with a different interface if you choose):
+4. Also add the following content to the `/home/pi/start-batman-adv.sh` file to enable IPv4 forwarding and add rules to enable external access for the mesh network (you can replace eth0 with a different interface if you choose):
 ```
 # Enable IPv4 traffic forwarding between eth0 and bat0
 sudo sysctl -w net.ipv4.ip_forward=1
@@ -129,15 +131,74 @@ sudo iptables -A FORWARD -i eth0 -o bat0 -m conntrack --ctstate RELATED,ESTABLIS
 sudo iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 ```
 
-3.c. Add a line to the same file to configure an IP address for the gateway on the mesh network:
+5. Add a line to the same file to configure an IP address for the gateway on the mesh network:
 ```
 sudo ifconfig bat0 192.168.199.1/24
 ```
 
-<i>N.B.</i>: See the [start-batman-adv-gw.sh.sample](start-batman-adv-gw.sh.sample) file for an example of the completed configuration.
+<i>N.B.</i>: See the [start-batman-adv-gw.sh.sample](start-batman-adv-gw.sh.sample) file for an example of the completed configuration for the gateway.
 
+6. Reboot the gateway
+```
+$ sudo reboot now
+```
 
-## Known Issues & Workarounds:
+## Bring up the mesh network & verify connectivity
+Now that the gateway has been appropriately configured to provide external access for the mesh, you can proceed to power up the other nodes and verify connectivity.
+Some basic checks you can perform include:
+
+1. Issue the command `ifconfig` on the gateway. At minimum, you should see the `bat0`, `eth0`, and `wlan0` interfaces up and communicating (or whatever you had used to complete the configuration). You should notice that:
+- eth0 has an IP address on your home/office network
+- bat0 has IP address 192.168.199.1
+- wlan0 has no IP address assigned
+
+2. Issue command `iwconfig` to show the wireless interfaces on the device. You should see something like:
+```
+wlan0   IEEE 802.11  ESSID:"pi-mesh"  
+        Mode:Ad-Hoc  Frequency:2.462 GHz  Cell: 3A:BC:74:3B:A1:D9
+        Tx-Power=31 dBm
+        Retry short limit:7   RTS thr:off   Fragment thr:off
+        Power Management:on
+```
+Note that:
+- The ESSID is the name of your network, set in /etc/network/interfaces.d/wlan0
+- The mode is Ad-Hoc
+
+3. Issue command `sudo batctl` if to show the interfaces participating in the mesh. You should see response wlan0: active to show that the WiFi interface wlan0 is part of the mesh.
+
+4. Issue command `sudo batctl n` to show the neighbouring mesh nodes your gateway node can see. You should see something similar to this:
+```
+[B.A.T.M.A.N. adv 2018.3, MainIF/MAC: wlan0/b8:27:eb:8e:ec:6c (bat0/ba:bf:0a:fd:33:e5 BATMAN_IV)]
+IF             Neighbor             last-seen
+    wlan0       b8:27:eb:bd:4d:e5   0.980s
+    wlan0       b8:27:eb:01:d4:bb   0.730s
+...
+```
+
+5. When using the `batctl` command it is not very helpful to show mac addresses for each of the mesh nodes. It is possible to create a file which will map a mac address to a hostname. Create a file /etc/bat-hosts as root user and add the mac addresses and host names of all your mesh nodes. The mac address used is the ether value of the wlan0 interface node on each node. A sample /etc/bat-hosts file looks like:
+```
+b8:27:eb:8e:ec:6c   bi-raspimesh01
+b8:27:eb:bd:4d:e5   bi-raspimesh02
+b8:27:eb:01:d4:bb   bi-raspimesh03
+```
+For consistency, use the same hostnames here as the hostnames of each respective node.
+
+Now when you run `sudo batctl n` you should now get:
+```
+[B.A.T.M.A.N. adv 2017.3, MainIF/MAC: wlan0/b8:27:eb:8e:ec:6c (bat0/ba:bf:0a:fd:33:e5 BATMAN_IV)]
+IF             Neighbor             last-seen
+    wlan0       bi-raspimesh02      0.890s
+    wlan0       bi-raspimesh03      0.660s
+...
+```
+Create the /etc/bat-hosts file on all of the mesh nodes if you want the mac addresses resolved to hostnames in `batctl` commands.
+
+6. Issuing the `ifconfig` command on the other mesh nodes should show at minimum the `bat0` and `wlan0` interfaces, and interface `bat0` should have an IP address assigned by the gateway node. If an IP address is not assigned to `bat0`, run `sudo dhclient -v bat0` to manually start the dhcp client on the interface.
+
+7. From any of the connected nodes, you should be able to `ping` any of the other nodes in the mesh network, and given that we went through the additional trouble of setting up a local domain for our environment, you should be able to ping by hostname, not just ip.
+
+8. From any of the connected nodes, you should also be able to reach external networks (ex. internet access) via your gateway node. 
+
 
 
 ___
