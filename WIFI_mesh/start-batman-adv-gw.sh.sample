@@ -13,6 +13,6 @@ sudo iptables -A FORWARD -i eth0 -o bat0 -m conntrack --ctstate RELATED,ESTABLIS
 sudo iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 
 # Activates the interfaces for batman-adv
-sudo ifconfig eth0 up
+sudo ifconfig wlan0 up
 sudo ifconfig bat0 up 		# bat0 is created via the first command
 sudo ifconfig bat0 192.168.199.1/24
