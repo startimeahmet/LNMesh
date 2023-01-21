@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for i in 20 30 40 50 60 70 80 90 100
+do
+  for j in 50000 100000 200000 300000 400000
+  do
+    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/100nodes_6hr_baseline/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/200nodes_6hr_baseline/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/300nodes_6hr_baseline/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/100nodes_6hr_CDS_no_loops/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/200nodes_6hr_CDS_no_loops/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/300nodes_6hr_CDS_no_loops/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/100nodes_6hr_UST/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/200nodes_6hr_UST/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+#    time python3 main.py --N_TRANSACTIONS $i --TOTAL_INVESTMENT $j > "experiment_results/300nodes_6hr_UST/N_TRANSACTIONS_${i}_TOTAL_INVESTMENT_${j}.log"
+  done
+done
