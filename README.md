@@ -17,10 +17,25 @@ Two types of underlying IP networks were used during testing (click for individu
 
 LN channels are then established on top of this IP connectivity.
 
-## Installing LN & establishing channels
+## Installing LN & Opening channels
 
+For this workshop, we used Core Lightning but other implementations of Lightning can also be used.
 
+To install Core Lightning on the Pis, follow the steps in their official repository: [Core Lightning - Get Started][core-lightning]
 
+We used Bitcoin's Testnet for our tests.
+
+Once each Pi has the Bitcoin Core and Core Lightning installed and fully synched, we can open some channels between the Pis.
+
+Channels can be opened arbitrarily or based on some strategy. We tested the following 3 topologies:
+
+<img src="lnmesh-topologies.png" width="700" height="auto"> 
+
+## Cutting the Internet Connection
+Once the channels are ready, we cut the Internet connection on all the Pis.
 
 ___
 Home - [BLE Star](BLE_star) - [Wi-Fi Mesh](WIFI_mesh)
+
+
+[core-lightning]: https://docs.corelightning.org/docs/getting-started
